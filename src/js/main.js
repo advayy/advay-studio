@@ -1,3 +1,5 @@
+const skinAndBone = new URL("/assets/skinandbone.png", import.meta.url).href;
+
 const artworks = [
     {
         id: 1,
@@ -7,7 +9,7 @@ const artworks = [
         dimensions: '2 ft x 1 ft',
         price: 'Available upon request',
         description: '...',
-        image: './assets/skinandbone.png'
+        image: skinAndBone
     },
 ];
 
