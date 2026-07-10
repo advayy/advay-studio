@@ -140,9 +140,7 @@ function renderGalleries() {
 
 // Mobile Menu
 function initMobileMenu() {
-    // Create menu toggle button for mobile
     if (window.innerWidth <= 768) {
-        const contentContainer = document.querySelector('.content-container');
         if (!document.querySelector('.mobile-menu-toggle')) {
             const toggleButton = document.createElement('button');
             toggleButton.className = 'mobile-menu-toggle';
@@ -154,18 +152,19 @@ function initMobileMenu() {
             toggleButton.addEventListener('click', (e) => {
                 e.stopPropagation();
                 sidebarNav.classList.toggle('mobile-open');
+                document.querySelector('.app-container').classList.toggle('menu-open');
             });
 
             // Close menu when clicking outside
             document.addEventListener('click', (e) => {
                 if (!sidebarNav.contains(e.target) && sidebarNav.classList.contains('mobile-open')) {
                     sidebarNav.classList.remove('mobile-open');
+                    document.querySelector('.app-container').classList.remove('menu-open');
                 }
             });
         }
     }
 }
-
 // Initialization
 document.addEventListener('DOMContentLoaded', () => {
     // Render data
