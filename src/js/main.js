@@ -1,89 +1,32 @@
-// ============================================
-// Sample Data - Replace with your actual data
-// ============================================
 const artworks = [
     {
         id: 1,
-        title: 'Untitled #1',
-        year: 2024,
-        medium: 'Mixed Media on Canvas',
-        dimensions: '120 x 90 cm',
+        title: 'Skin and Bone',
+        year: 2026,
+        medium: 'Leather and Porcelain',
+        dimensions: '2 ft x 1 ft',
         price: 'Available upon request',
-        description: 'An exploration of spatial relationships and the interplay between color and form.',
-        image: './assets/placeholder-1.svg'
-    },
-    {
-        id: 2,
-        title: 'Study in Motion',
-        year: 2024,
-        medium: 'Acrylic on Canvas',
-        dimensions: '100 x 80 cm',
-        price: '$8,500',
-        description: 'Investigating movement and rhythm through gestural abstraction.',
-        image: './assets/placeholder-2.svg'
-    },
-    {
-        id: 3,
-        title: 'Convergence',
-        year: 2023,
-        medium: 'Oil on Canvas',
-        dimensions: '150 x 120 cm',
-        price: 'Sold',
-        description: 'A study of light and shadow, examining how perception shifts with perspective.',
-        image: './assets/placeholder-3.svg'
-    },
-    {
-        id: 4,
-        title: 'Untitled #2',
-        year: 2023,
-        medium: 'Digital Print on Aluminum',
-        dimensions: '80 x 60 cm',
-        price: '$4,200',
-        description: 'Digital exploration merging abstract forms with photography.',
-        image: './assets/placeholder-4.svg'
+        description: '...',
+        image: './assets/skinandbone.png'
     },
 ];
 
 const galleries = [
     {
-        name: 'Galerie La Contemporaine',
-        location: 'Vancouver, BC',
-        years: '2024 - Present'
-    },
-    {
-        name: 'The Platform Gallery',
-        location: 'Toronto, ON',
-        years: '2023 - 2024'
-    },
-    {
-        name: 'West Coast Contemporary',
-        location: 'Vancouver, BC',
-        years: '2022 - 2023'
-    },
-    {
-        name: 'Independent Projects',
-        location: 'Various',
-        years: '2021 - 2024'
-    },
-    {
-        name: 'Emerging Artists Collective',
-        location: 'Vancouver, BC',
-        years: '2020 - 2022'
+        name: 'Timms Walkway Gallery',
+        location: 'Langley, BC',
+        years: '2026'
     },
 ];
 
-// ============================================
 // DOM Elements
-// ============================================
 const pages = document.querySelectorAll('.page');
 const navLinks = document.querySelectorAll('.nav-link');
 const modal = document.getElementById('workModal');
 const modalClose = document.querySelector('.modal-close');
 const sidebarNav = document.querySelector('.sidebar-nav');
 
-// ============================================
 // Navigation
-// ============================================
 function setActivePage(pageId) {
     // Hide all pages
     pages.forEach(page => {
@@ -95,19 +38,16 @@ function setActivePage(pageId) {
         link.classList.remove('active');
     });
 
-    // Show selected page
-    const selectedPage = document.querySelector(`[data-page="${pageId}"]`);
+    // Show selected page - use getElementById instead
+    const selectedPage = document.getElementById(pageId);
     if (selectedPage) {
         selectedPage.classList.add('active');
     }
 
     // Set active nav link
-    const activeLink = document.querySelector(`[data-page="${pageId}"]`);
-    if (activeLink && activeLink.classList.contains('nav-link')) {
+    const activeLink = document.querySelector(`.nav-link[data-page="${pageId}"]`);
+    if (activeLink) {
         activeLink.classList.add('active');
-    } else {
-        const navLink = document.querySelector(`.nav-link[data-page="${pageId}"]`);
-        if (navLink) navLink.classList.add('active');
     }
 
     // Close mobile menu
@@ -116,7 +56,6 @@ function setActivePage(pageId) {
     // Update URL
     window.history.pushState(null, null, `#${pageId}`);
 }
-
 navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
@@ -131,9 +70,7 @@ window.addEventListener('hashchange', () => {
     setActivePage(pageId);
 });
 
-// ============================================
 // Work Modal
-// ============================================
 function openWorkModal(work) {
     document.getElementById('modalImage').src = work.image;
     document.getElementById('modalTitle').textContent = work.title;
@@ -167,9 +104,7 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// ============================================
 // Render Collections
-// ============================================
 function renderWorks() {
     const worksGrid = document.getElementById('worksGrid');
     worksGrid.innerHTML = artworks.map(work => `
@@ -203,9 +138,7 @@ function renderGalleries() {
     `).join('');
 }
 
-// ============================================
 // Mobile Menu
-// ============================================
 function initMobileMenu() {
     // Create menu toggle button for mobile
     if (window.innerWidth <= 768) {
@@ -233,9 +166,7 @@ function initMobileMenu() {
     }
 }
 
-// ============================================
 // Initialization
-// ============================================
 document.addEventListener('DOMContentLoaded', () => {
     // Render data
     renderWorks();
