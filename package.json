@@ -1,7 +1,7 @@
 {
   "name": "advay.studio",
   "version": "1.0.0",
-  "description": "Advay Rajguru - Contemporary Art Portfolio",
+  "description": "AdvayStudio - Portfolio",
   "main": "index.js",
   "scripts": {
     "dev": "vite",
@@ -10,7 +10,7 @@
     "deploy": "gh-pages -d dist"
   },
   "keywords": [],
-  "author": "Advay Rajguru",
+  "author": "Advay.studio",
   "license": "ISC",
   "dependencies": {
     "three": "^0.173.0"
